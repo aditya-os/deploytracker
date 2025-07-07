@@ -1,0 +1,33 @@
+# apiVersion: v1
+# kind: ServiceAccount
+# metadata:
+#   name: deploy-tracker
+
+# ---
+
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: ClusterRole
+# metadata:
+#   name: pod-replicaset-reader
+# rules:
+#   - apiGroups: [""]
+#     resources: ["pods"]
+#     verbs: ["get", "list", "watch"]
+#   - apiGroups: ["apps"]
+#     resources: ["replicasets"]
+#     verbs: ["get", "list", "watch"]
+
+# ---
+
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: ClusterRoleBinding
+# metadata:
+#   name: pod-replicaset-reader-binding
+# roleRef:
+#   apiGroup: rbac.authorization.k8s.io
+#   kind: ClusterRole
+#   name: pod-replicaset-reader
+# subjects:
+#   - kind: ServiceAccount
+#     name: deploy-tracker
+#     namespace: default

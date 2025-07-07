@@ -1,0 +1,11 @@
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: pod-fetcher
+#   namespace: default
+# spec:
+#   serviceAccountName: deploy-tracker
+#   containers:
+#     - name: fetcher
+#       image: deploytracker
+#       imagePullPolicy : Never
